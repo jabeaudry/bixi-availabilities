@@ -29,6 +29,7 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 /client/node_modules
+/src/main/resources/application.properties
 
 ### VS Code ###
 .vscode/
