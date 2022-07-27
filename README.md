@@ -11,7 +11,7 @@ When I'm in a rush, I never take the time to check the status of bike sharing do
 **Front-end: [React](https://reactjs.org/)**  
 The React app is located at `/client/`.
 
-**Back-end: [Java Spring](https://spring.io/), [MySql](https://www.mysql.com/), [Bixi GBFS Feed](https://gbfs.velobixi.com/gbfs/gbfs.json?_ga=2.235037897.91692927.1658890311-543543907.1657057596)**  
+**Back-end: [Java Spring](https://spring.io/), [MySQL](https://www.mysql.com/), [Bixi GBFS Feed](https://gbfs.velobixi.com/gbfs/gbfs.json?_ga=2.235037897.91692927.1658890311-543543907.1657057596)**  
 The back-end is located at `/src/`. This application relies on Spring Security for authorization and authentication purposes. The users, their roles and their saved bike stations are stored using the model–view–controller framework (Spring MVC) to a MySQL database. Finally, the status of the stations is fetched from the GBFS feed every minute.
 
 ## Componenents
