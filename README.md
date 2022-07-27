@@ -8,7 +8,7 @@ When I'm in a rush, I never take the time to check the status of bike sharing do
 
 ## Implementation
 
-**Front-end: [React](https://reactjs.org/)**  
+**Front-end: [React/Redux](https://reactjs.org/)**  
 The React app is located at `/client/`.
 
 **Back-end: [Java Spring](https://spring.io/), [MySQL](https://www.mysql.com/), [Bixi GBFS Feed](https://gbfs.velobixi.com/gbfs/gbfs.json?_ga=2.235037897.91692927.1658890311-543543907.1657057596)**  
