@@ -14,7 +14,7 @@ const required = (value) => {
 		);
 	}
 };
-const email = (value) => {
+const vEmail = (value) => {
 	if (!isEmail(value)) {
 		return (
 			<div className="alert alert-danger" role="alert">
@@ -41,7 +41,7 @@ const vLastname = (value) => {
 		);
 	}
 };
-const vpassword = (value) => {
+const vPassword = (value) => {
 	if (value.length < 6 || value.length > 40) {
 		return (
 			<div className="alert alert-danger" role="alert">
@@ -61,7 +61,7 @@ class Register extends Component {
 		this.state = {
 			email: "",
 			password: "",
-			firstname: "",
+			firstName: "",
 			lastName: "",
 			successful: false,
 		};
@@ -95,7 +95,7 @@ class Register extends Component {
 		if (this.checkBtn.context._errors.length === 0) {
 			this.props
 				.dispatch(
-					register(this.state.firstName, this.state.lasttName, this.state.email, this.state.password)
+					register(this.state.email, this.state.password, this.state.firstName, this.state.lastName)
 				)
 				.then(() => {
 					this.setState({
@@ -134,7 +134,7 @@ class Register extends Component {
 										className="form-control"
 										name="firstName"
 										value={this.state.firstName}
-										onChange={this.onChangeUsername}
+										onChange={this.onChangeFirstName}
 										validations={[required, vFirstname]}
 									/>
 								</div>
@@ -157,7 +157,7 @@ class Register extends Component {
 										name="email"
 										value={this.state.email}
 										onChange={this.onChangeEmail}
-										validations={[required, email]}
+										validations={[required, vEmail]}
 									/>
 								</div>
 								<div className="form-group">
@@ -168,7 +168,7 @@ class Register extends Component {
 										name="password"
 										value={this.state.password}
 										onChange={this.onChangePassword}
-										validations={[required, vpassword]}
+										validations={[required, vPassword]}
 									/>
 								</div>
 								<div className="form-group">

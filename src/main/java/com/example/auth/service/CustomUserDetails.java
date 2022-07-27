@@ -3,6 +3,7 @@ package com.example.auth.service;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -10,6 +11,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.example.auth.model.AppUser;
+import com.example.auth.model.SavedStation;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
@@ -20,6 +22,7 @@ public class CustomUserDetails implements UserDetails {
 	private String firstName;
 	private String lastName;
 	private String email;
+
 	private Collection<? extends GrantedAuthority> authorities;
 	@JsonIgnore
 	private String password;
@@ -44,8 +47,7 @@ public class CustomUserDetails implements UserDetails {
 				user.getPassword(), 
 				user.getFirstName(),
 				user.getLastName(),
-				authorities);
-				
+				authorities	);
 	}
 	
 
@@ -65,6 +67,15 @@ public class CustomUserDetails implements UserDetails {
 	public String getLastName() {
 		return lastName;
 	}
+	
+//	public Set<SavedStation> getFaves() {
+//		return faves;
+//	}
+//
+//	public void setFaves(Set<SavedStation> faves) {
+//		this.faves = faves;
+//	}
+
 	@Override
 	public boolean isAccountNonExpired() {
 		return true;

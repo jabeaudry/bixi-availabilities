@@ -1,0 +1,14 @@
+#mapContainer {
+	width: 80vw;
+	height: 68vh;
+}
+
+.favouriteButton {
+	margin-top: 2px !important;	
+	z-index: 100;
+	position: relative;
+}
+
+.control-buttons{
+	padding-bottom: 1%;
+}

@@ -18,6 +18,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 	@Autowired
 	private UserRepo repo;
 	
+	
 	@Override
 	@Transactional
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {

@@ -14,12 +14,15 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.example.auth.exception.TokenRefreshException;
 import com.example.auth.model.AppUser;
@@ -35,8 +38,10 @@ import com.example.auth.payload.response.TokenRefreshResponse;
 import com.example.auth.repository.RefreshTokenRepository;
 import com.example.auth.repository.RoleRepo;
 import com.example.auth.repository.UserRepo;
+import com.example.auth.repository.BikeRepo;
 import com.example.auth.security.JwtUtils;
 import com.example.auth.service.CustomUserDetails;
+import com.example.auth.service.CustomUserDetailsService;
 import com.example.auth.service.RefreshTokenService;
 
 
@@ -58,7 +63,16 @@ public class AuthController {
 	@Autowired
 	JwtUtils jwtUtils;
 	@Autowired
+	CustomUserDetailsService userService;
+	@Autowired
 	RefreshTokenService refreshTokenService;
+	
+	
+	
+	@GetMapping("/users/{email}")
+	public UserDetails getUser(@PathVariable("email") String email) {
+		return userService.loadUserByUsername(email);
+	}
 	
 	
 	@PostMapping("/signin")
@@ -95,6 +109,7 @@ public class AuthController {
 	            "Refresh token is not in database!"));
 	  }
 	
+	@SuppressWarnings("unused")
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
 		if (userRepository.existsByEmail(signUpRequest.getEmail())) {
@@ -109,7 +124,9 @@ public class AuthController {
 							signUpRequest.getFirstName(),
 							signUpRequest.getLastName());
 		
-		 Set<String> strRoles = signUpRequest.getRole();
+//		 Set<String> strRoles = signUpRequest.getRole();
+		Set<String> strRoles = new HashSet<String>();
+		strRoles.add("user");
 		 Set<Role> roles = new HashSet<>();
 		 if (strRoles == null) {
 		      Role userRole = roleRepository.findByName(ERole.ROLE_USER)

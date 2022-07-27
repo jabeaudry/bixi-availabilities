@@ -23,6 +23,7 @@ class AuthService {
 			firstName,
 			lastName
 		});
+
 	}
 }
 export default new AuthService();

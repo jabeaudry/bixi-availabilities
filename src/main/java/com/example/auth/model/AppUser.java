@@ -1,8 +1,10 @@
 package com.example.auth.model;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -11,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
@@ -51,6 +54,10 @@ public class AppUser {
         joinColumns = @JoinColumn(name = "user_id"), 
         inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
+    
+//    @OneToMany (mappedBy = "user",fetch = FetchType.LAZY,
+//            cascade = CascadeType.ALL)
+//    private Set<SavedStation> faves;
 	
 	public AppUser() {
 	}
@@ -98,4 +105,11 @@ public class AppUser {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+//	public Set<SavedStation> getFaves() {
+//		return faves;
+//	}
+//	public void setFaves(Set<SavedStation> faves) {
+//		this.faves = faves;
+//	}
+    
 }

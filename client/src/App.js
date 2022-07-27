@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { connect } from "react-redux";
 import { Router, Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -13,6 +13,9 @@ import BoardAdmin from "./components/board-admin.component";
 import { logout } from "./actions/auth";
 import { clearMessage } from "./actions/message";
 import { history } from './helpers/history';
+
+
+
 class App extends Component {
 	constructor(props) {
 		super(props);
@@ -22,6 +25,7 @@ class App extends Component {
 			showAdminBoard: false,
 			currentUser: undefined,
 		};
+
 		history.listen((location) => {
 			props.dispatch(clearMessage()); // clear message when changing location
 		});
@@ -54,7 +58,7 @@ class App extends Component {
 									Home
 								</Link>
 							</li>
-							{showModeratorBoard && (
+							{/* {showModeratorBoard && (
 								<li className="nav-item">
 									<Link to={"/mod"} className="nav-link">
 										Moderator Board
@@ -74,13 +78,13 @@ class App extends Component {
 										User
 									</Link>
 								</li>
-							)}
+							)} */}
 						</div>
 						{currentUser ? (
 							<div className="navbar-nav ml-auto">
 								<li className="nav-item">
 									<Link to={"/profile"} className="nav-link">
-										{currentUser.email}
+										{currentUser.firstName}
 									</Link>
 								</li>
 								<li className="nav-item">
