@@ -1,5 +1,5 @@
 # Bixi Availabilities
-An application to track nearby bike sharing docks, using `React`, `Java Spring` and `MySQL`.
+An application that tracks nearby bike sharing docks, using `React`, `Java Spring` and `MySQL`.
 
 <img width="917" alt="Screenshot 2022-07-26 221805" src="https://user-images.githubusercontent.com/56971054/181146232-d08a251d-4505-411a-8401-9691e06f2ae5.png">
 
